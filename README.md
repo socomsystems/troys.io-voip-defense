@@ -1,17 +1,17 @@
 # troys.io-voip-defense
 # Block countries, networks and VoIP blacklists combining Netfilter’s iptables, ipset and voipbl.org
 
-# My original posts:
-# https://troys.io/block-countries-networks-and-voip-blacklists-efficiently-combining-netfilters-iptables-and-ipset/
+My original posts:
+https://troys.io/block-countries-networks-and-voip-blacklists-efficiently-combining-netfilters-iptables-and-ipset/
 
-# Make ipset a service,keeping block lists alive and surviving power cycles:
+Make ipset a service,keeping block lists alive and surviving power cycles:
 
-git /lib/systemd/system/ipset.service
+create /lib/systemd/system/ipset.service
 
 systemctl daemon-reload
 systemctl enable ipset
 
-git /usr/local/bin/voipbl.sh
+create /usr/local/bin/voipbl.sh
 
 crontab -e 0 1 * * * /usr/local/bin/voipbl.sh
 
