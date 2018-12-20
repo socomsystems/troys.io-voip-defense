@@ -1,0 +1,14 @@
+[Unit]
+Description=IPSET VoIP Blacklist
+Before=netfilter-persistent.service
+ConditionFileNotEmpty=/etc/ipset/voipbl
+ 
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/sbin/ipset -exist -file /etc/ipset/voipbl restore
+ExecStop=/sbin/ipset -file /etc/ipset/voipbl save
+ 
+[Install]
+WantedBy=multi-user.target
+Alias=ipset.service
